@@ -1,0 +1,72 @@
+﻿<Window x:Class="CinemaApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CinemaApp"
+        mc:Ignorable="d"
+        Title="Кинотеатр" Height="450" Width="800" MaxHeight="450" MaxWidth="800">
+    <Grid VerticalAlignment="Center" Margin="20">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
+
+        <Label Content="Client" Grid.Row="0" Grid.Column="0"/>
+        <ComboBox Name="cmbClient" Grid.Column="0" Grid.Row="2">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock>
+        <Run Text="{Binding lastname}"/>
+        <Run Text=""/>
+        <Run Text="{Binding firstname}"/>
+                    </TextBlock>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+
+        <Label Content="Film" Grid.Row="0" Grid.Column="1"/>
+        <ComboBox Name="cmbFilm" Grid.Column="1" Grid.Row="2" DisplayMemberPath="film_name"/>
+
+        <Label Content="Type" Grid.Row="0" Grid.Column="2"/>
+        <ComboBox Name="cmbType" Grid.Column="2" Grid.Row="2" DisplayMemberPath="seanse_type_name"/>
+
+        <Label Content="Seance" Grid.Row="0" Grid.Column="3"/>
+        <ComboBox Name="cmbSeance" Grid.Column="3" Grid.Row="2">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock>
+                <Run Text="{Binding seance_start, StringFormat='{}{0:hh\\:mm}'}"/>
+                <Run Text=" - "/>
+                <Run Text="{Binding seance_end, StringFormat='{}{0:hh\\:mm}'}"/>
+                    </TextBlock>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+
+        <Label Content="Place" Grid.Row="0" Grid.Column="4"/>
+        <ComboBox Name="cmbPlace" Grid.Column="4" Grid.Row="2">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock>
+        <Run Text="{Binding place_row}"/>
+        <Run Text=" - "/>
+        <Run Text="{Binding place_col}"/>
+                    </TextBlock>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+        <Button Content="Сохранить" Name="btnSave" Grid.Row="4" Grid.Column="2" Click="btnSave_Click"/>
+
+    </Grid>
+</Window>
